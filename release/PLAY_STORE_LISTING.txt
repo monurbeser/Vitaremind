@@ -1,0 +1,152 @@
+VITAREMIND — PLAY STORE LISTING
+================================
+
+APP NAME: VitaRemind
+PACKAGE: com.vitaremind.app
+CATEGORY: Health & Fitness
+
+──────────────────────────────────────────────────────────────────────────────
+SHORT DESCRIPTION (80 chars max)
+──────────────────────────────────────────────────────────────────────────────
+EN: Track water intake & medications with smart daily reminders.
+TR: Akıllı hatırlatıcılarla su tüketiminizi ve ilaçlarınızı takip edin.
+
+──────────────────────────────────────────────────────────────────────────────
+FULL DESCRIPTION — ENGLISH (4000 chars max)
+──────────────────────────────────────────────────────────────────────────────
+VitaRemind is your all-in-one health companion for staying hydrated and
+never missing a dose.
+
+💧 WATER TRACKER
+• Log your daily water intake with one tap — choose from quick amounts
+  (150ml, 200ml, 250ml, 500ml) or enter a custom quantity.
+• Animated circular progress ring shows how close you are to your daily goal.
+• Set your personal daily goal anywhere from 500ml to 4000ml.
+• Swipe to delete any entry you logged by mistake.
+• Smart reminder notifications fire every 1–4 hours during your chosen
+  active window (e.g. 08:00–22:00).
+
+💊 MEDICINE REMINDER
+• Add unlimited medications with name, dosage, color code, and multiple
+  daily reminder times.
+• Color-coded cards make it easy to spot each medicine at a glance.
+• Mark doses as Taken or Skip them — the app tracks your history.
+• Today's Doses widget on the Home screen shows what's coming up next.
+• Automatic notifications fire exactly when each dose is due.
+
+🏠 SMART DASHBOARD
+• Time-based greeting ("Good morning / afternoon / evening").
+• Water summary card with animated progress ring.
+• Upcoming doses card with quick Take action buttons.
+• 7-day water intake bar chart — see your weekly hydration at a glance.
+• Daily streak badge: see how many consecutive days you've hit your goal 🔥
+
+⚙️ FULLY CUSTOMIZABLE
+• Daily water goal slider (500ml – 4000ml, step 250ml).
+• Water reminder interval: 1h / 2h / 3h / 4h / Off.
+• Active reminder hours: choose your start and end time.
+• Medicine notification snooze: 5 / 10 / 15 / 30 minutes.
+• App theme: System default / Light / Dark.
+
+🔒 PRIVACY FIRST
+• All health data stored locally on your device — never uploaded.
+• No account required. No sign-in. No cloud sync.
+• AdMob is used only to display ads; health data is never shared.
+
+PERMISSIONS USED:
+• POST_NOTIFICATIONS — to send water and medicine reminders.
+• RECEIVE_BOOT_COMPLETED — to reschedule reminders after device restart.
+• INTERNET — required by AdMob to load ads.
+• SCHEDULE_EXACT_ALARM — for precise medicine reminder timing.
+
+──────────────────────────────────────────────────────────────────────────────
+FULL DESCRIPTION — TURKISH
+──────────────────────────────────────────────────────────────────────────────
+VitaRemind, su içme alışkanlıklarınızı ve ilaç saatlerinizi takip etmeniz için
+tasarlanmış kapsamlı sağlık asistanınızdır.
+
+💧 SU TAKİPÇİSİ
+• Tek dokunuşla günlük su tüketiminizi kaydedin — hızlı miktarlardan seçin
+  (150ml, 200ml, 250ml, 500ml) ya da özel miktar girin.
+• Animasyonlu dairesel ilerleme çubuğu günlük hedefinize ne kadar yakın
+  olduğunuzu gösterir.
+• 500ml–4000ml arasında kişisel günlük hedef belirleyin.
+• Hatalı kayıtları silerek düzeltin.
+• Seçtiğiniz saatler arasında (örn. 08:00–22:00) 1–4 saatte bir akıllı
+  hatırlatma bildirim alın.
+
+💊 İLAÇ HATIRLATICI
+• İsim, doz, renk ve birden fazla hatırlatma saatiyle sınırsız ilaç ekleyin.
+• Renkli kartlar her ilacı bir bakışta ayırt etmenizi sağlar.
+• Dozu "Alındı" veya "Atlandı" olarak işaretleyin, geçmişiniz kayıt altına alınır.
+• Ana ekrandaki "Bugünün Dozları" widget'ı bir sonraki dozu gösterir.
+• Her doz saatinde otomatik bildirim gönderilir.
+
+🏠 AKILLI GÖSTERGE PANELİ
+• Saat dilimli selamlama (Günaydın / İyi öğleden sonra / İyi akşamlar).
+• Animasyonlu su tüketim kartı.
+• Hızlı "Al" butonu olan yaklaşan doz kartı.
+• 7 günlük su tüketim çubuk grafiği.
+• Günlük seri rozeti: üst üste kaç gün hedefe ulaştığınızı görün 🔥
+
+⚙️ TAM ÖZELLEŞTİRİLEBİLİR
+• Günlük su hedefi kaydırıcısı (500ml – 4000ml).
+• Su hatırlatma aralığı: 1s / 2s / 3s / 4s / Kapalı.
+• Aktif hatırlatma saatleri: başlangıç ve bitiş saatini seçin.
+• İlaç bildirimi erteleme: 5 / 10 / 15 / 30 dakika.
+• Uygulama teması: Sistem varsayılanı / Açık / Koyu.
+
+🔒 GİZLİLİK ÖNCELİKLİ
+• Tüm sağlık verileri cihazınızda yerel olarak saklanır — hiçbir zaman yüklenmez.
+• Hesap gerekmez. Giriş yok. Bulut senkronizasyonu yok.
+
+──────────────────────────────────────────────────────────────────────────────
+SCREENSHOTS REQUIRED
+──────────────────────────────────────────────────────────────────────────────
+Phone: minimum 2, maximum 8 screenshots
+Recommended size: 1080 x 1920 px (portrait) or 1920 x 1080 px (landscape)
+
+Suggested screenshots:
+1. Home dashboard (streak badge + water card + medicine card)
+2. Water Tracker (circular progress + log list)
+3. Add Medicine screen (color picker + time picker)
+4. Medicine List (colored cards + status chips)
+5. Settings screen (all options visible)
+6. Dark mode — Home screen
+
+FEATURE GRAPHIC: 1024 x 500 px
+Design tip: Use Canva template "Google Play Feature Graphic"
+Content: Teal background, VitaRemind logo center, tagline below
+
+──────────────────────────────────────────────────────────────────────────────
+CONTENT RATING (IARC)
+──────────────────────────────────────────────────────────────────────────────
+Category: Health & Fitness
+Violence: None
+Sexual content: None
+Profanity: None
+Ads: Yes (AdMob — ads are NOT targeted to children)
+Audience: Everyone (PEGI 3 / ESRB Everyone)
+Sensitive topics: None — does not provide medical advice
+
+──────────────────────────────────────────────────────────────────────────────
+RELEASE BUILD COMMANDS
+──────────────────────────────────────────────────────────────────────────────
+1. Generate keystore (one-time):
+   keytool -genkey -v -keystore vitaremind-release.jks \
+     -keyalg RSA -keysize 2048 -validity 10000 \
+     -alias vitaremind
+
+2. Fill in local.properties (see comments in that file)
+
+3. Build AAB for Play Store:
+   ./gradlew bundleRelease
+
+4. AAB location:
+   app/build/outputs/bundle/release/app-release.aab
+
+5. Verify size < 50MB before uploading to Play Console
+   ls -lh app/build/outputs/bundle/release/app-release.aab
+
+6. Upload to Play Console → Internal Testing track
+   URL: https://play.google.com/console

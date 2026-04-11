@@ -1,0 +1,121 @@
+VITAREMIND v1.0.0 — QA CHECKLIST
+===================================
+Date: 2026-04-11
+Tester: ______________
+Device: ______________
+Android version: ______________
+
+CRITICAL PATH
+──────────────────────────────────────────────────────────────────────────────
+[ ] Cold launch: splash screen displays correctly (icon + teal background)
+[ ] First launch: Welcome/Onboarding screen shown (3 pages, auto-scroll 1.5s)
+[ ] Second launch: goes directly to Home (no onboarding repeat)
+[ ] Bottom navigation: all 4 tabs respond (Home / Water / Medicine / Settings)
+[ ] Bottom bar hides/shows correctly when navigating
+
+WATER TRACKER
+──────────────────────────────────────────────────────────────────────────────
+[ ] Circular progress ring displays correctly (empty state = empty arc)
+[ ] Quick-add chips work: +150ml, +200ml, +250ml, +500ml
+[ ] FAB opens custom amount dialog
+[ ] Custom amount validates: only numbers, max 4 digits
+[ ] Adding water updates circular progress immediately
+[ ] Log entries appear in list with correct time
+[ ] Swipe left on entry shows red background with delete icon
+[ ] Entry is deleted on full swipe
+[ ] Empty state: "Tap + to log your first glass of water" shown when no logs
+
+MEDICINE
+──────────────────────────────────────────────────────────────────────────────
+[ ] FAB navigates to Add Medicine screen
+[ ] Name field: required, blank guard on Save
+[ ] Dosage field: required
+[ ] 8 color swatches render, selection shows black border
+[ ] "Add reminder time" opens TimePickerDialog
+[ ] Selected times appear as chips with X remove button
+[ ] Save creates medicine card in list
+[ ] Medicine card shows: name, dosage, colored left border, status chip
+[ ] Swipe left on card shows delete background
+[ ] Swipe triggers confirmation dialog
+[ ] Confirm deletes medicine; Cancel dismisses swipe
+[ ] Empty state: "Tap + to add your first medication"
+
+HOME DASHBOARD
+──────────────────────────────────────────────────────────────────────────────
+[ ] Greeting changes based on time of day
+[ ] Streak badge shows (after 1+ day goal met)
+[ ] Water card: animated circular progress, correct consumed/goal
+[ ] "Add +" button on water card navigates to Water tab
+[ ] Medicine card: shows pending doses
+[ ] "View All" on medicine card navigates to Medicine tab
+[ ] Weekly bar chart renders 7 bars with day labels
+[ ] Banner ad loads at bottom (test ad visible in debug build)
+
+SETTINGS
+──────────────────────────────────────────────────────────────────────────────
+[ ] Daily goal slider: moves 500–4000ml in 250ml steps
+[ ] Slider value persists after leaving and returning to Settings
+[ ] Reminder interval dropdown: Off/1h/2h/3h/4h options work
+[ ] Start/End time pickers open and save correctly
+[ ] Snooze dropdown: 5/10/15/30 min options
+[ ] Notification sound toggle persists
+[ ] Theme: Light → all screens switch to light mode
+[ ] Theme: Dark → all screens switch to dark mode
+[ ] Theme: System → follows device setting
+[ ] Reset All Data: confirmation dialog appears
+[ ] After reset: water logs cleared, medicines cleared, goal reset to 2000ml
+
+NOTIFICATIONS
+──────────────────────────────────────────────────────────────────────────────
+[ ] POST_NOTIFICATIONS permission requested on first Home visit (Android 13+)
+[ ] Water reminder fires at configured interval
+[ ] Medicine notification fires at scheduled time
+[ ] Tapping notification opens app
+
+ADS
+──────────────────────────────────────────────────────────────────────────────
+[ ] Banner ad visible on Home screen (Google test ad in debug)
+[ ] Interstitial fires after adding 3rd medicine (test ad shown)
+[ ] Interstitial loads next ad after dismissal
+[ ] Rewarded ad button visible (if implemented in UI)
+
+DARK MODE
+──────────────────────────────────────────────────────────────────────────────
+[ ] Home screen: all text readable in dark mode
+[ ] Water screen: teal progress visible
+[ ] Medicine screen: cards readable
+[ ] Settings screen: all rows visible
+[ ] Dialogs: contrast correct
+
+EDGE CASES
+──────────────────────────────────────────────────────────────────────────────
+[ ] No crash when adding 0ml water (blocked by validation)
+[ ] No crash when medicine name is very long (40+ chars)
+[ ] No crash on rapid tapping of FAB
+[ ] No ANR on main thread (test with slow operations)
+[ ] App resumes correctly from background after 30+ minutes
+[ ] Device rotation: no crash, state preserved
+
+PERFORMANCE
+──────────────────────────────────────────────────────────────────────────────
+[ ] Cold start < 1 second to first frame
+[ ] No visible jank on LazyColumn scroll
+[ ] Memory: no OutOfMemoryError in 10-minute session
+[ ] Monkey test 1000 events: no crash
+  Command: adb shell monkey -p com.vitaremind.app --throttle 50 -v 1000
+
+RELEASE BUILD
+──────────────────────────────────────────────────────────────────────────────
+[ ] ./gradlew test → BUILD SUCCESSFUL
+[ ] ./gradlew assembleDebug → BUILD SUCCESSFUL
+[ ] ./gradlew bundleRelease → BUILD SUCCESSFUL (requires keystore in local.properties)
+[ ] AAB size < 50MB
+[ ] Release build installs and runs correctly on device
+[ ] ProGuard: no missing class errors on first launch
+
+SIGN-OFF
+──────────────────────────────────────────────────────────────────────────────
+All critical path items: PASS / FAIL
+Total issues found: ____
+Blocking issues: ____
+Release approved: YES / NO

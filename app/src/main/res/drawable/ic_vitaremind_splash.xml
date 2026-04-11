@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Water drop -->
+    <path
+        android:fillColor="#1D9E75"
+        android:pathData="M54,18 C54,18 32,44 32,60 C32,72.15 41.85,82 54,82 C66.15,82 76,72.15 76,60 C76,44 54,18 54,18 Z"/>
+
+    <!-- Pill capsule white background -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.90"
+        android:pathData="M44,56 Q44,49 51,49 L57,49 Q64,49 64,56 L64,66 Q64,73 57,73 L51,73 Q44,73 44,66 Z"/>
+
+    <!-- Left pill half - teal light -->
+    <path
+        android:fillColor="#9FE1CB"
+        android:pathData="M44,56 Q44,49 51,49 L54,49 L54,73 L51,73 Q44,73 44,66 Z"/>
+
+    <!-- Pill divider (as path — <line> is not valid in vector drawables) -->
+    <path
+        android:strokeColor="#1D9E75"
+        android:strokeWidth="1.5"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M44,61 L64,61"/>
+
+</vector>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Outer soft glow circle -->
+    <path
+        android:fillColor="#1D9E75"
+        android:fillAlpha="0.12"
+        android:pathData="M60,4 A56,56 0 1,1 59.999,4 Z"/>
+
+    <!-- Main circle background -->
+    <path
+        android:fillColor="#1D9E75"
+        android:pathData="M60,14 A46,46 0 1,1 59.999,14 Z"/>
+
+    <!-- Water drop (white, centered-upper) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M60,28
+            C60,28 44,46 44,57
+            C44,65.84 51.16,73 60,73
+            C68.84,73 76,65.84 76,57
+            C76,46 60,28 60,28 Z"/>
+
+    <!-- Pill capsule (white, lower right quadrant of drop) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.0"
+        android:pathData="M0,0"/>
+
+    <!-- Pill body background -->
+    <path
+        android:fillColor="#1D9E75"
+        android:pathData="
+            M50,58 Q50,52 56,52 L64,52 Q70,52 70,58 L70,66 Q70,72 64,72 L56,72 Q50,72 50,66 Z"/>
+
+    <!-- Left pill half (light teal) -->
+    <path
+        android:fillColor="#9FE1CB"
+        android:pathData="
+            M50,58 Q50,52 56,52 L60,52 L60,72 L56,72 Q50,72 50,66 Z"/>
+
+    <!-- Right pill half (white) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M60,52 L64,52 Q70,52 70,58 L70,66 Q70,72 64,72 L60,72 Z"/>
+
+    <!-- Pill divider line -->
+    <path
+        android:strokeColor="#1D9E75"
+        android:strokeWidth="1.5"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M60,52 L60,72"/>
+
+    <!-- Small water ripple dots at bottom -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.5"
+        android:pathData="M48,82 A2,2 0 1,1 47.999,82 Z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.35"
+        android:pathData="M60,86 A2.5,2.5 0 1,1 59.999,86 Z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.5"
+        android:pathData="M72,82 A2,2 0 1,1 71.999,82 Z"/>
+
+</vector>
