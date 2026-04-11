@@ -58,3 +58,8 @@
 -keepattributes *Annotation*
 -dontwarn sun.misc.**
 -dontwarn java.lang.invoke.**
+
+-keep class kotlin.** { *; }
+-keep class kotlinx.** { *; }
+-dontwarn kotlin.**
+-dontwarn kotlinx.**

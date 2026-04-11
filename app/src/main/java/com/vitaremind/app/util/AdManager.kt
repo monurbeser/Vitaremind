@@ -25,9 +25,9 @@ class AdManager @Inject constructor(
         private const val TEST_REWARDED_ID     = "ca-app-pub-3940256099942544/5224354917"
 
         // Replace these with your real ad unit IDs before release
-        private const val PROD_BANNER_ID       = "ca-app-pub-3940256099942544/6300978111"
-        private const val PROD_INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712"
-        private const val PROD_REWARDED_ID     = "ca-app-pub-3940256099942544/5224354917"
+        private const val PROD_BANNER_ID       = "ca-app-pub-1407872603866175/6040598696"
+        private const val PROD_INTERSTITIAL_ID = "ca-app-pub-1407872603866175/3278703983"
+        private const val PROD_REWARDED_ID     = "ca-app-pub-1407872603866175/9652540643"
     }
 
     val isTestMode: Boolean get() = BuildConfig.DEBUG

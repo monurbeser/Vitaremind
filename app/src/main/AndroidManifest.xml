@@ -18,7 +18,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-1407872603866175~5112103369"/>
 
         <!-- Disable default WorkManager initializer so HiltWorkerFactory can take over -->
         <provider

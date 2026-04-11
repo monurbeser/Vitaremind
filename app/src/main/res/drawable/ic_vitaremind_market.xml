@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    VitaRemind — Market / Feature Graphic Icon
+    Viewport: 512 x 512  (PNG'ye export ederken 512x512 veya 1024x1024 seç)
+    Renkler:
+      Teal    #1D9E75
+      Teal100 #9FE1CB
+      Purple  #7F77DD
+      White   #FFFFFF
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- ── Dış gölge halkası (soft shadow) ── -->
+    <path
+        android:fillColor="#1A000000"
+        android:pathData="M256,32
+            C132,32 32,132 32,256
+            C32,380 132,480 256,480
+            C380,480 480,380 480,256
+            C480,132 380,32 256,32 Z"/>
+
+    <!-- ── Ana teal daire zemin ── -->
+    <path
+        android:fillColor="#1D9E75"
+        android:pathData="M256,24
+            C128.5,24 24,128.5 24,256
+            C24,383.5 128.5,488 256,488
+            C383.5,488 488,383.5 488,256
+            C488,128.5 383.5,24 256,24 Z"/>
+
+    <!-- ── Daire içi hafif radyal parlaklık (üst sol) ── -->
+    <path
+        android:fillColor="#22FFFFFF"
+        android:pathData="M256,24
+            C128.5,24 24,128.5 24,256
+            L24,200
+            C24,128 128,44 256,44
+            C310,44 358,64 395,98
+            C358,56 312,24 256,24 Z"/>
+
+    <!-- ── Beyaz su damlası ── -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M256,88
+            C256,88 168,196 168,264
+            C168,311.4 207.6,350 256,350
+            C304.4,350 344,311.4 344,264
+            C344,196 256,88 256,88 Z"/>
+
+    <!-- Su damlası içi: hafif teal reflex (gerçekçilik) -->
+    <path
+        android:fillColor="#9FE1CB"
+        android:fillAlpha="0.45"
+        android:pathData="
+            M256,130
+            C256,130 210,196 205,248
+            C202,274 215,295 232,305
+            C210,288 200,260 205,232
+            C212,196 256,130 256,130 Z"/>
+
+    <!-- ── Mor hap kapsülü (altta ortalı) ── -->
+    <!-- Kapsül gövdesi -->
+    <path
+        android:fillColor="#7F77DD"
+        android:pathData="
+            M188,374
+            L324,374
+            C342,374 356,388 356,406
+            C356,424 342,438 324,438
+            L188,438
+            C170,438 156,424 156,406
+            C156,388 170,374 188,374 Z"/>
+
+    <!-- Kapsül sol yarı açık renk -->
+    <path
+        android:fillColor="#A8A2EE"
+        android:pathData="
+            M188,374
+            L256,374
+            L256,438
+            L188,438
+            C170,438 156,424 156,406
+            C156,388 170,374 188,374 Z"/>
+
+    <!-- Kapsül orta çizgi (beyaz) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:pathData="M256,374 L256,438"/>
+
+    <!-- Kapsül parlama (üst beyaz highlight) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.20"
+        android:pathData="
+            M200,374
+            L312,374
+            C330,374 344,382 352,394
+            C344,386 330,380 312,380
+            L200,380
+            C182,380 168,386 160,394
+            C168,382 182,374 200,374 Z"/>
+
+</vector>
