@@ -1,4 +1,7 @@
 # ── VitaRemind ProGuard Rules ──────────────────────────────────────────────────
+# Workaround for R8 8.5.x ConcurrentModificationException in shaking phase
+-dontoptimize
+-dontshrink
 
 # Room — keep all entities and DAOs
 -keep class com.vitaremind.app.data.local.entity.** { *; }
