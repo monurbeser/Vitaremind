@@ -47,6 +47,8 @@ class WaterReminderWorker @AssistedInject constructor(
         val notificationManager = applicationContext
             .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
+        val soundEnabled = waterRepository.getSoundEnabled()
+
         val notification = NotificationCompat.Builder(
             applicationContext,
             NotificationHelper.WATER_CHANNEL_ID
@@ -55,7 +57,11 @@ class WaterReminderWorker @AssistedInject constructor(
             .setContentTitle("Time to drink water! 💧")
             .setContentText(body)
             .setStyle(NotificationCompat.BigTextStyle().bigText(body))
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setPriority(
+                if (soundEnabled) NotificationCompat.PRIORITY_HIGH
+                else NotificationCompat.PRIORITY_LOW
+            )
+            .setSilent(!soundEnabled)
             .setAutoCancel(true)
             .build()
 

@@ -46,4 +46,5 @@ class WaterRepository @Inject constructor(
 
     suspend fun getStartHour(): Int = prefsDataStore.waterReminderStartHour.first()
     suspend fun getEndHour(): Int = prefsDataStore.waterReminderEndHour.first()
+    suspend fun getSoundEnabled(): Boolean = prefsDataStore.medicineSoundEnabled.first()
 }
