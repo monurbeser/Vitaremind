@@ -439,8 +439,13 @@ private fun WeeklyWaterChart(
                             .fillMaxSize()
                     ) {
                         if (value > 0) {
+                            val displayText = if (value >= 1000) {
+                                "${"%.1f".format(value / 1000f)}L"
+                            } else {
+                                "${value}ml"
+                            }
                             Text(
-                                "${value / 1000}L",
+                                displayText,
                                 style    = MaterialTheme.typography.labelSmall,
                                 color    = if (isToday) Teal500 else Color.Gray,
                                 fontSize = 9.sp

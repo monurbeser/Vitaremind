@@ -2,6 +2,7 @@ package com.vitaremind.app.ui.settings
 
 import android.app.TimePickerDialog
 import android.os.Build
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -299,33 +300,45 @@ private fun DropdownListItem(
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    ListItem(
-        headlineContent   = { Text(label) },
-        trailingContent   = {
-            ExposedDropdownMenuBox(
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Text(
+            text  = label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        ExposedDropdownMenuBox(
+            expanded         = expanded,
+            onExpandedChange = { expanded = it },
+            modifier         = Modifier.fillMaxWidth()
+        ) {
+            OutlinedTextField(
+                value         = selected,
+                onValueChange = {},
+                readOnly      = true,
+                trailingIcon  = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                },
+                modifier  = Modifier
+                    .fillMaxWidth()
+                    .menuAnchor(androidx.compose.material3.MenuAnchorType.PrimaryNotEditable),
+                textStyle = MaterialTheme.typography.bodySmall
+            )
+            ExposedDropdownMenu(
                 expanded         = expanded,
-                onExpandedChange = { expanded = it }
+                onDismissRequest = { expanded = false }
             ) {
-                OutlinedTextField(
-                    value         = selected,
-                    onValueChange = {},
-                    readOnly      = true,
-                    trailingIcon  = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                    modifier      = Modifier.menuAnchor(androidx.compose.material3.MenuAnchorType.PrimaryNotEditable),
-                    textStyle     = MaterialTheme.typography.bodySmall
-                )
-                ExposedDropdownMenu(
-                    expanded         = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    options.forEach { option ->
-                        DropdownMenuItem(
-                            text    = { Text(option) },
-                            onClick = { onSelect(option); expanded = false }
-                        )
-                    }
+                options.forEach { option ->
+                    DropdownMenuItem(
+                        text    = { Text(option) },
+                        onClick = { onSelect(option); expanded = false }
+                    )
                 }
             }
         }
-    )
+    }
 }
