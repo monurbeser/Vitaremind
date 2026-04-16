@@ -50,6 +50,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.vitaremind.app.data.local.entity.Medicine
+import com.vitaremind.app.ui.theme.NunitoFontFamily
 import com.vitaremind.app.ui.theme.Purple400
 import com.vitaremind.app.ui.theme.Teal500
 
@@ -81,7 +82,13 @@ fun AddMedicineScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add Medicine") },
+                title = {
+                    Text(
+                        "Add Medicine",
+                        fontFamily = NunitoFontFamily,
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.ExtraBold
+                    )
+                },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = Color.White)

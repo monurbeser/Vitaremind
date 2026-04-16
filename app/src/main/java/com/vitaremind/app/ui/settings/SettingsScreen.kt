@@ -41,6 +41,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.vitaremind.app.ui.theme.NunitoFontFamily
 import com.vitaremind.app.ui.theme.Teal500
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -77,7 +78,13 @@ fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Settings") },
+                title = {
+                    Text(
+                        "Settings",
+                        fontFamily = NunitoFontFamily,
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.ExtraBold
+                    )
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor    = Teal500,
                     titleContentColor = Color.White
