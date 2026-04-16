@@ -91,16 +91,16 @@ private val pages = listOf(
         subtitle      = "Smart reminders for all your medications — always on time"
     ),
     OnboardingPage(
-        gradientStart = Color(0xFFF5F4FB),
-        gradientEnd   = Color(0xFFEBEAFF),
-        icon          = Icons.Filled.WaterDrop,
-        secondIcon    = Icons.Filled.Medication,
-        iconTint      = Teal500,
-        secondIconTint = Purple400,
-        iconBg        = Color.White,
-        title         = "Ready to Start!",
-        subtitle      = "Set your goals and let VitaRemind take care of the rest",
-        isLight       = true
+        gradientStart  = Color(0xFF2D2A6E),
+        gradientEnd    = Color(0xFF1D9E75),
+        icon           = Icons.Filled.WaterDrop,
+        secondIcon     = Icons.Filled.Medication,
+        iconTint       = Color.White,
+        secondIconTint = Color.White,
+        iconBg         = Color.White,
+        title          = "Ready to Start!",
+        subtitle       = "Set your goals and let VitaRemind take care of the rest",
+        isLight        = false
     )
 )
 
