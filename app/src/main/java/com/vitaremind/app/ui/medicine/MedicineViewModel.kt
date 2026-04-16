@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.vitaremind.app.data.local.entity.DoseLog
 import com.vitaremind.app.data.local.entity.Medicine
 import com.vitaremind.app.data.repository.MedicineRepository
+import com.vitaremind.app.util.MedicineScheduler
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,13 +13,15 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MedicineViewModel @Inject constructor(
-    private val repository: MedicineRepository
+    private val repository: MedicineRepository,
+    private val scheduler: MedicineScheduler
 ) : ViewModel() {
 
     val medicines: StateFlow<List<Medicine>> = repository.getAllActiveMedicines()
@@ -37,6 +40,8 @@ class MedicineViewModel @Inject constructor(
     fun addMedicine(medicine: Medicine) {
         viewModelScope.launch {
             repository.addMedicine(medicine)
+            val allMedicines = repository.getAllActiveMedicines().first()
+            scheduler.scheduleAllReminders(allMedicines)
             val newCount = _addMedicineCount.value + 1
             _addMedicineCount.value = newCount
             if (newCount % 3 == 0) {
@@ -46,7 +51,11 @@ class MedicineViewModel @Inject constructor(
     }
 
     fun deleteMedicine(medicine: Medicine) {
-        viewModelScope.launch { repository.deleteMedicine(medicine) }
+        viewModelScope.launch {
+            repository.deleteMedicine(medicine)
+            val remaining = repository.getAllActiveMedicines().first()
+            scheduler.scheduleAllReminders(remaining)
+        }
     }
 
     fun markDoseTaken(doseLog: DoseLog) {
