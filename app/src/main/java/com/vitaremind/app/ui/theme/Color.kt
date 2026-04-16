@@ -3,39 +3,51 @@ package com.vitaremind.app.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Primary - Teal
-val Teal500 = Color(0xFF1D9E75)
-val Teal100 = Color(0xFF9FE1CB)
-val Teal700 = Color(0xFF0D6B4F)
-val Teal50  = Color(0xFFE6F7F2)
+val Teal500 = Color(0xFF00B899)
+val Teal100 = Color(0xFFB2EDE3)
+val Teal700 = Color(0xFF007A65)
+val Teal50  = Color(0xFFE0FAF5)
 
 // Secondary - Purple
-val Purple400 = Color(0xFF7F77DD)
-val Purple100 = Color(0xFFCECBF6)
-val Purple700 = Color(0xFF4B42B5)
-val Purple50  = Color(0xFFF0EFF9)
+val Purple400 = Color(0xFF7B6FE8)
+val Purple100 = Color(0xFFD4D0F8)
+val Purple700 = Color(0xFF4A3EC7)
+val Purple50  = Color(0xFFF0EEFF)
 
 // Neutral
-val Background   = Color(0xFFFAFAFA)
+val Background   = Color(0xFFF5F4FB)   // soft lavender-white
 val Surface      = Color(0xFFFFFFFF)
+val SurfaceCard  = Color(0xFFFFFFFF)
 val OnPrimary    = Color(0xFFFFFFFF)
 val OnSecondary  = Color(0xFFFFFFFF)
-val OnBackground = Color(0xFF1A1A1A)
-val OnSurface    = Color(0xFF1A1A1A)
+val OnBackground = Color(0xFF1A1A2E)
+val OnSurface    = Color(0xFF1A1A2E)
+
+// Text helpers
+val TextPrimary   = Color(0xFF1A1A2E)
+val TextSecondary = Color(0xFF6B7280)
+val TextHint      = Color(0xFFADB5BD)
+
+// Status chips
+val ChipTaken   = Color(0xFF00B899)   // teal
+val ChipPending = Color(0xFF7B6FE8)   // purple
+val ChipSkipped = Color(0xFFADB5BD)   // grey
 
 // Error
-val ErrorRed = Color(0xFFE24B4A)
+val ErrorRed = Color(0xFFE53935)
 val OnError  = Color(0xFFFFFFFF)
 
 // Dark theme
-val Teal200Dark          = Color(0xFF6EC9A8)
-val TealContainerDark    = Color(0xFF005140)
-val Purple200Dark        = Color(0xFFBAB5F0)
-val PurpleContainerDark  = Color(0xFF3D348B)
-val BackgroundDark       = Color(0xFF121212)
-val SurfaceDark          = Color(0xFF1E1E1E)
-val OnPrimaryDark        = Color(0xFF003328)
-val OnSecondaryDark      = Color(0xFF1E1B6B)
-val OnBackgroundDark     = Color(0xFFE0E0E0)
-val OnSurfaceDark        = Color(0xFFE0E0E0)
+val Teal200Dark          = Color(0xFF5ED5BF)
+val TealContainerDark    = Color(0xFF004D40)
+val Purple200Dark        = Color(0xFFB8B0F5)
+val PurpleContainerDark  = Color(0xFF3730A3)
+val BackgroundDark       = Color(0xFF0F0F1A)
+val SurfaceDark          = Color(0xFF1C1C2E)
+val OnPrimaryDark        = Color(0xFF002A22)
+val OnSecondaryDark      = Color(0xFF1A1560)
+val OnBackgroundDark     = Color(0xFFE8E8F0)
+val OnSurfaceDark        = Color(0xFFE8E8F0)
+val SurfaceVariantDark   = Color(0xFF252540)
 val ErrorRedDark         = Color(0xFFCF6679)
 val OnErrorDark          = Color(0xFF690005)

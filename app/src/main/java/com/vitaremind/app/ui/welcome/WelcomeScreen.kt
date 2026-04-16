@@ -40,34 +40,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.googlefonts.Font
-import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vitaremind.app.R
+import com.vitaremind.app.ui.theme.NunitoFontFamily
 import com.vitaremind.app.ui.theme.Purple400
 import com.vitaremind.app.ui.theme.Teal500
 import kotlinx.coroutines.launch
-
-// ── Google Font: Nunito ────────────────────────────────────────────────────────
-private val provider = GoogleFont.Provider(
-    providerAuthority = "com.google.android.gms.fonts",
-    providerPackage   = "com.google.android.gms",
-    certificates      = R.array.com_google_android_gms_fonts_certs
-)
-
-private val NunitoFont = GoogleFont("Nunito")
-
-val NunitoFontFamily = FontFamily(
-    Font(googleFont = NunitoFont, fontProvider = provider, weight = FontWeight.Normal),
-    Font(googleFont = NunitoFont, fontProvider = provider, weight = FontWeight.SemiBold),
-    Font(googleFont = NunitoFont, fontProvider = provider, weight = FontWeight.Bold),
-    Font(googleFont = NunitoFont, fontProvider = provider, weight = FontWeight.ExtraBold),
-)
 
 // ── Onboarding page data ───────────────────────────────────────────────────────
 private data class OnboardingPage(
