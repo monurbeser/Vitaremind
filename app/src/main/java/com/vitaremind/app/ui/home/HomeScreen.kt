@@ -46,6 +46,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -59,9 +60,13 @@ import com.vitaremind.app.data.local.entity.DoseLog
 import com.vitaremind.app.data.local.entity.Medicine
 import com.vitaremind.app.ui.AdViewModel
 import com.vitaremind.app.ui.components.BannerAdView
+import com.vitaremind.app.ui.theme.NunitoFontFamily
 import com.vitaremind.app.ui.theme.Purple400
+import com.vitaremind.app.ui.theme.Purple50
 import com.vitaremind.app.ui.theme.Teal100
+import com.vitaremind.app.ui.theme.Teal50
 import com.vitaremind.app.ui.theme.Teal500
+import com.vitaremind.app.ui.theme.TextSecondary
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -98,7 +103,8 @@ fun HomeScreen(
                     Text(
                         "VitaRemind",
                         style      = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = NunitoFontFamily
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -106,7 +112,8 @@ fun HomeScreen(
                     titleContentColor = Color.White
                 )
             )
-        }
+        },
+        containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         LazyColumn(
             modifier            = Modifier
@@ -120,19 +127,21 @@ fun HomeScreen(
                 Row(
                     modifier          = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                        .padding(horizontal = 20.dp, vertical = 12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            "$greeting, stay healthy! \uD83D\uDC4B",
+                            "$greeting! \uD83D\uDC4B",
                             style      = MaterialTheme.typography.headlineSmall,
-                            fontWeight = FontWeight.SemiBold
+                            fontWeight = FontWeight.ExtraBold,
+                            fontFamily = NunitoFontFamily
                         )
                         Text(
                             "Here's your health summary",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color.Gray
+                            style      = MaterialTheme.typography.bodySmall,
+                            color      = TextSecondary,
+                            fontFamily = NunitoFontFamily
                         )
                     }
                     if (streak > 0) {
@@ -145,6 +154,7 @@ fun HomeScreen(
                                 style      = MaterialTheme.typography.labelMedium,
                                 color      = Color(0xFFE65100),
                                 fontWeight = FontWeight.Bold,
+                                fontFamily = NunitoFontFamily,
                                 modifier   = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                             )
                         }
@@ -158,7 +168,7 @@ fun HomeScreen(
                     consumed          = totalToday,
                     goal              = dailyGoal,
                     onNavigateToWater = onNavigateToWater,
-                    modifier          = Modifier.padding(horizontal = 16.dp)
+                    modifier          = Modifier.padding(horizontal = 20.dp)
                 )
             }
 
@@ -168,7 +178,7 @@ fun HomeScreen(
                     doses            = nextDoses,
                     medicines        = medicines,
                     onNavigateToMeds = onNavigateToMedicine,
-                    modifier         = Modifier.padding(horizontal = 16.dp)
+                    modifier         = Modifier.padding(horizontal = 20.dp)
                 )
             }
 
@@ -178,7 +188,7 @@ fun HomeScreen(
                     WeeklyWaterChart(
                         data     = weeklyData,
                         goal     = dailyGoal,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                        modifier = Modifier.padding(horizontal = 20.dp)
                     )
                 }
             }
@@ -194,7 +204,7 @@ fun HomeScreen(
     }
 }
 
-// Water Summary Card
+// ── Water Summary Card ─────────────────────────────────────────────────────────
 @Composable
 private fun WaterSummaryCard(
     consumed: Int,
@@ -209,101 +219,130 @@ private fun WaterSummaryCard(
     LaunchedEffect(Unit) { started = true }
     val animatedProgress by animateFloatAsState(
         targetValue   = if (started) progress else 0f,
-        animationSpec = tween(800),
+        animationSpec = tween(900),
         label         = "waterProgress"
     )
 
     Card(
         modifier  = modifier.fillMaxWidth(),
-        shape     = RoundedCornerShape(20.dp),
-        elevation = CardDefaults.cardElevation(3.dp),
-        colors    = CardDefaults.cardColors(containerColor = Teal500)
+        shape     = RoundedCornerShape(24.dp),
+        elevation = CardDefaults.cardElevation(0.dp),
+        colors    = CardDefaults.cardColors(containerColor = Color.Transparent)
     ) {
-        Row(
-            modifier          = Modifier.padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    Brush.linearGradient(
+                        colors = listOf(Teal500, Color(0xFF007A65))
+                    ),
+                    shape = RoundedCornerShape(24.dp)
+                )
+                .padding(20.dp)
         ) {
-            // Circular progress indicator
-            Box(
-                modifier         = Modifier.size(72.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Canvas(modifier = Modifier.fillMaxSize()) {
-                    val stroke = Stroke(8.dp.toPx(), cap = StrokeCap.Round)
-                    val inset  = stroke.width / 2
-                    val arcSize = Size(size.width - stroke.width, size.height - stroke.width)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                // Circular arc progress
+                Box(
+                    modifier         = Modifier.size(80.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Canvas(modifier = Modifier.fillMaxSize()) {
+                        val stroke = Stroke(9.dp.toPx(), cap = StrokeCap.Round)
+                        val inset  = stroke.width / 2
+                        val arcSize = Size(size.width - stroke.width, size.height - stroke.width)
 
-                    drawArc(
-                        color      = Color.White.copy(alpha = 0.3f),
-                        startAngle = 135f,
-                        sweepAngle = 270f,
-                        useCenter  = false,
-                        style      = stroke,
-                        topLeft    = Offset(inset, inset),
-                        size       = arcSize
-                    )
-                    drawArc(
-                        color      = Color.White,
-                        startAngle = 135f,
-                        sweepAngle = 270f * animatedProgress,
-                        useCenter  = false,
-                        style      = stroke,
-                        topLeft    = Offset(inset, inset),
-                        size       = arcSize
-                    )
+                        drawArc(
+                            color      = Color.White.copy(alpha = 0.25f),
+                            startAngle = 135f,
+                            sweepAngle = 270f,
+                            useCenter  = false,
+                            style      = stroke,
+                            topLeft    = Offset(inset, inset),
+                            size       = arcSize
+                        )
+                        drawArc(
+                            color      = Color.White,
+                            startAngle = 135f,
+                            sweepAngle = 270f * animatedProgress,
+                            useCenter  = false,
+                            style      = stroke,
+                            topLeft    = Offset(inset, inset),
+                            size       = arcSize
+                        )
+                    }
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Icon(
+                            Icons.Filled.WaterDrop,
+                            contentDescription = null,
+                            tint     = Color.White,
+                            modifier = Modifier.size(22.dp)
+                        )
+                        Text(
+                            "${(progress * 100).toInt()}%",
+                            style      = MaterialTheme.typography.labelSmall,
+                            color      = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = NunitoFontFamily,
+                            fontSize   = 10.sp
+                        )
+                    }
                 }
-                Icon(
-                    Icons.Filled.WaterDrop,
-                    contentDescription = null,
-                    tint     = Color.White,
-                    modifier = Modifier.size(28.dp)
-                )
-            }
 
-            Spacer(Modifier.width(16.dp))
+                Spacer(Modifier.width(16.dp))
 
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    "Water Today",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = Color.White.copy(alpha = 0.8f)
-                )
-                Text(
-                    "$consumed ml",
-                    style      = MaterialTheme.typography.headlineMedium,
-                    fontWeight = FontWeight.Bold,
-                    color      = Color.White
-                )
-                Text(
-                    "of $goal ml goal",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = Color.White.copy(alpha = 0.8f)
-                )
-                if (isComplete) {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        "Goal reached! \uD83C\uDF89",
-                        style      = MaterialTheme.typography.labelSmall,
+                        "Water Today",
+                        style      = MaterialTheme.typography.labelMedium,
+                        color      = Color.White.copy(alpha = 0.8f),
+                        fontFamily = NunitoFontFamily
+                    )
+                    Text(
+                        "$consumed ml",
+                        style      = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.ExtraBold,
                         color      = Color.White,
-                        fontWeight = FontWeight.Bold
+                        fontFamily = NunitoFontFamily
+                    )
+                    Text(
+                        "of $goal ml goal",
+                        style      = MaterialTheme.typography.bodySmall,
+                        color      = Color.White.copy(alpha = 0.75f),
+                        fontFamily = NunitoFontFamily
+                    )
+                    if (isComplete) {
+                        Spacer(Modifier.height(2.dp))
+                        Text(
+                            "Goal reached! \uD83C\uDF89",
+                            style      = MaterialTheme.typography.labelSmall,
+                            color      = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = NunitoFontFamily
+                        )
+                    }
+                }
+
+                Button(
+                    onClick = onNavigateToWater,
+                    colors  = ButtonDefaults.buttonColors(
+                        containerColor = Color.White.copy(alpha = 0.22f),
+                        contentColor   = Color.White
+                    ),
+                    shape            = RoundedCornerShape(14.dp),
+                    contentPadding   = PaddingValues(horizontal = 16.dp, vertical = 10.dp)
+                ) {
+                    Text(
+                        "+ Add",
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = NunitoFontFamily
                     )
                 }
-            }
-
-            Button(
-                onClick = onNavigateToWater,
-                colors  = ButtonDefaults.buttonColors(
-                    containerColor = Color.White.copy(alpha = 0.25f),
-                    contentColor   = Color.White
-                ),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Text("+ Add", fontWeight = FontWeight.Bold)
             }
         }
     }
 }
 
-// Today's Medicines Card
+// ── Today's Medicines Card ─────────────────────────────────────────────────────
 @Composable
 private fun TodayMedicinesCard(
     doses: List<DoseLog>,
@@ -313,9 +352,9 @@ private fun TodayMedicinesCard(
 ) {
     Card(
         modifier  = modifier.fillMaxWidth(),
-        shape     = RoundedCornerShape(20.dp),
-        elevation = CardDefaults.cardElevation(3.dp),
-        colors    = CardDefaults.cardColors(containerColor = Purple400)
+        shape     = RoundedCornerShape(24.dp),
+        elevation = CardDefaults.cardElevation(0.dp),
+        colors    = CardDefaults.cardColors(containerColor = Purple50)
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
             Row(
@@ -323,16 +362,34 @@ private fun TodayMedicinesCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment     = Alignment.CenterVertically
             ) {
-                Text(
-                    "Today's Medicines",
-                    style      = MaterialTheme.typography.titleMedium,
-                    color      = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .size(8.dp)
+                            .clip(CircleShape)
+                            .background(Purple400)
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        "Today's Medicines",
+                        style      = MaterialTheme.typography.titleMedium,
+                        color      = Purple400,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = NunitoFontFamily
+                    )
+                }
                 TextButton(onClick = onNavigateToMeds) {
-                    Text("View All", color = Color.White.copy(alpha = 0.8f))
+                    Text(
+                        "View All",
+                        color      = Purple400.copy(alpha = 0.8f),
+                        fontFamily = NunitoFontFamily,
+                        fontWeight = FontWeight.SemiBold,
+                        style      = MaterialTheme.typography.labelLarge
+                    )
                 }
             }
+
+            Spacer(Modifier.height(4.dp))
 
             if (doses.isEmpty()) {
                 Row(
@@ -342,14 +399,15 @@ private fun TodayMedicinesCard(
                     Icon(
                         Icons.Filled.CheckCircle,
                         contentDescription = null,
-                        tint     = Color.White.copy(alpha = 0.7f),
+                        tint     = Purple400.copy(alpha = 0.6f),
                         modifier = Modifier.size(20.dp)
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(
                         "All done for today! \u2728",
-                        color = Color.White.copy(alpha = 0.9f),
-                        style = MaterialTheme.typography.bodyMedium
+                        color      = TextSecondary,
+                        style      = MaterialTheme.typography.bodyMedium,
+                        fontFamily = NunitoFontFamily
                     )
                 }
             } else {
@@ -357,29 +415,32 @@ private fun TodayMedicinesCard(
                     val medicine = medicines.find { it.id == dose.medicineId }
                     if (medicine != null) {
                         Row(
-                            modifier          = Modifier
+                            modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 4.dp),
+                                .padding(vertical = 6.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Box(
                                 modifier = Modifier
-                                    .size(8.dp)
-                                    .clip(CircleShape)
+                                    .width(4.dp)
+                                    .height(36.dp)
+                                    .clip(RoundedCornerShape(2.dp))
                                     .background(Color(medicine.color))
                             )
-                            Spacer(Modifier.width(8.dp))
+                            Spacer(Modifier.width(12.dp))
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
                                     medicine.name,
-                                    color      = Color.White,
+                                    color      = MaterialTheme.colorScheme.onSurface,
                                     style      = MaterialTheme.typography.bodyMedium,
-                                    fontWeight = FontWeight.Medium
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = NunitoFontFamily
                                 )
                                 Text(
                                     "${medicine.dosage}  \u00B7  ${timeFormat.format(Date(dose.scheduledTime))}",
-                                    color = Color.White.copy(alpha = 0.7f),
-                                    style = MaterialTheme.typography.labelSmall
+                                    color      = TextSecondary,
+                                    style      = MaterialTheme.typography.labelSmall,
+                                    fontFamily = NunitoFontFamily
                                 )
                             }
                         }
@@ -390,7 +451,7 @@ private fun TodayMedicinesCard(
     }
 }
 
-// Weekly Water Bar Chart
+// ── Weekly Water Bar Chart ─────────────────────────────────────────────────────
 @Composable
 private fun WeeklyWaterChart(
     data: List<Pair<String, Int>>,
@@ -399,22 +460,24 @@ private fun WeeklyWaterChart(
 ) {
     Card(
         modifier  = modifier.fillMaxWidth(),
-        shape     = RoundedCornerShape(20.dp),
-        elevation = CardDefaults.cardElevation(2.dp),
+        shape     = RoundedCornerShape(24.dp),
+        elevation = CardDefaults.cardElevation(0.dp),
         colors    = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(20.dp)) {
             Text(
                 "Weekly Water Intake",
                 style      = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.ExtraBold,
+                fontFamily = NunitoFontFamily
             )
             Text(
                 "Last 7 days",
-                style = MaterialTheme.typography.bodySmall,
-                color = Color.Gray
+                style      = MaterialTheme.typography.bodySmall,
+                color      = TextSecondary,
+                fontFamily = NunitoFontFamily
             )
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(20.dp))
 
             val maxVal     = maxOf(data.maxOfOrNull { it.second } ?: 0, goal, 1)
             val todayIndex = data.size - 1
@@ -446,21 +509,22 @@ private fun WeeklyWaterChart(
                             }
                             Text(
                                 displayText,
-                                style    = MaterialTheme.typography.labelSmall,
-                                color    = if (isToday) Teal500 else Color.Gray,
-                                fontSize = 9.sp
+                                style      = MaterialTheme.typography.labelSmall,
+                                color      = if (isToday) Teal500 else TextSecondary,
+                                fontSize   = 9.sp,
+                                fontFamily = NunitoFontFamily
                             )
                         }
                         Spacer(Modifier.height(2.dp))
                         Box(
                             modifier = Modifier
                                 .weight(maxOf(ratio, 0.05f))
-                                .fillMaxWidth(0.6f)
-                                .clip(RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
+                                .fillMaxWidth(0.55f)
+                                .clip(RoundedCornerShape(topStart = 6.dp, topEnd = 6.dp))
                                 .background(
                                     when {
                                         metGoal -> Teal500
-                                        isToday -> Teal500.copy(alpha = 0.7f)
+                                        isToday -> Teal500.copy(alpha = 0.65f)
                                         else    -> Teal100
                                     }
                                 )
@@ -469,16 +533,17 @@ private fun WeeklyWaterChart(
                         Text(
                             label,
                             style      = MaterialTheme.typography.labelSmall,
-                            color      = if (isToday) Teal500 else Color.Gray,
-                            fontWeight = if (isToday) FontWeight.Bold else FontWeight.Normal,
+                            color      = if (isToday) Teal500 else TextSecondary,
+                            fontWeight = if (isToday) FontWeight.ExtraBold else FontWeight.Normal,
                             fontSize   = 10.sp,
-                            textAlign  = TextAlign.Center
+                            textAlign  = TextAlign.Center,
+                            fontFamily = NunitoFontFamily
                         )
                     }
                 }
             }
 
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(12.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(
                     Modifier
@@ -486,17 +551,27 @@ private fun WeeklyWaterChart(
                         .clip(CircleShape)
                         .background(Teal500)
                 )
-                Spacer(Modifier.width(4.dp))
-                Text("Goal met", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
-                Spacer(Modifier.width(12.dp))
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    "Goal met",
+                    style      = MaterialTheme.typography.labelSmall,
+                    color      = TextSecondary,
+                    fontFamily = NunitoFontFamily
+                )
+                Spacer(Modifier.width(16.dp))
                 Box(
                     Modifier
                         .size(8.dp)
                         .clip(CircleShape)
                         .background(Teal100)
                 )
-                Spacer(Modifier.width(4.dp))
-                Text("Below goal", style = MaterialTheme.typography.labelSmall, color = Color.Gray)
+                Spacer(Modifier.width(6.dp))
+                Text(
+                    "Below goal",
+                    style      = MaterialTheme.typography.labelSmall,
+                    color      = TextSecondary,
+                    fontFamily = NunitoFontFamily
+                )
             }
         }
     }
