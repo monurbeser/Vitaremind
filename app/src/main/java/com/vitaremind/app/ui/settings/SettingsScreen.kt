@@ -1,6 +1,7 @@
 package com.vitaremind.app.ui.settings
 
 import android.app.TimePickerDialog
+import android.os.Build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -204,6 +205,39 @@ fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
                     )
                 }
             )
+
+            // Exact alarm permission banner (Android 12+ only)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val alarmManager = LocalContext.current
+                    .getSystemService(android.app.AlarmManager::class.java)
+                val canSchedule  = alarmManager?.canScheduleExactAlarms() ?: true
+                if (!canSchedule) {
+                    val ctx = LocalContext.current
+                    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+                    ListItem(
+                        headlineContent   = {
+                            Text("Exact Alarm Permission", color = Color(0xFFBA7517))
+                        },
+                        supportingContent = {
+                            Text(
+                                "Medicine reminders need this to fire on time.",
+                                color = Color.Gray
+                            )
+                        },
+                        trailingContent   = {
+                            TextButton(onClick = {
+                                ctx.startActivity(
+                                    android.content.Intent(
+                                        android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM
+                                    ).apply {
+                                        data = android.net.Uri.parse("package:${ctx.packageName}")
+                                    }
+                                )
+                            }) { Text("Allow", color = Color(0xFFBA7517)) }
+                        }
+                    )
+                }
+            }
 
             // ──────────────────────────────────────────────────────────────────
             // C) GENERAL

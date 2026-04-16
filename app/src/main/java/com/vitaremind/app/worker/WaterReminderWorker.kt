@@ -25,6 +25,15 @@ class WaterReminderWorker @AssistedInject constructor(
     }
 
     override suspend fun doWork(): Result {
+        // Active hours guard — do not notify outside the configured window
+        val currentHour = java.util.Calendar.getInstance()
+            .get(java.util.Calendar.HOUR_OF_DAY)
+        val startHour = waterRepository.getStartHour()
+        val endHour   = waterRepository.getEndHour()
+        if (currentHour < startHour || currentHour >= endHour) {
+            return Result.success()
+        }
+
         val totalMl = waterRepository.getTodayTotal().first() ?: 0
         val goal = waterRepository.dailyGoalMl.first()
         val remaining = (goal - totalMl).coerceAtLeast(0)

@@ -4,6 +4,7 @@ import com.vitaremind.app.data.datastore.UserPreferencesDataStore
 import com.vitaremind.app.data.local.dao.WaterDao
 import com.vitaremind.app.data.local.entity.WaterLog
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
@@ -42,4 +43,7 @@ class WaterRepository @Inject constructor(
     val dailyGoalMl: Flow<Int> = prefsDataStore.dailyGoalMl
 
     suspend fun setDailyGoal(ml: Int) = prefsDataStore.setDailyGoalMl(ml)
+
+    suspend fun getStartHour(): Int = prefsDataStore.waterReminderStartHour.first()
+    suspend fun getEndHour(): Int = prefsDataStore.waterReminderEndHour.first()
 }
