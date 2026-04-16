@@ -1,9 +1,10 @@
 package com.vitaremind.app.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -25,6 +26,6 @@ fun BannerAdView(
         },
         modifier = modifier
             .fillMaxWidth()
-            .wrapContentHeight()
+            .height(50.dp)   // BANNER sabit 320x50 — wrapContentHeight yükleme öncesi 0px veriyordu
     )
 }
