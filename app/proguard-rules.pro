@@ -3,6 +3,12 @@
 -dontoptimize
 -dontshrink
 
+# Disable obfuscation — Hilt/Dagger generated classes break with renaming
+-dontobfuscate
+
+# Keep all app classes (Hilt components, ViewModels, generated Hilt code)
+-keep class com.vitaremind.app.** { *; }
+
 # Room — keep all entities and DAOs
 -keep class com.vitaremind.app.data.local.entity.** { *; }
 -keep interface com.vitaremind.app.data.local.dao.** { *; }
